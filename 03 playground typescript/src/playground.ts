@@ -70,7 +70,39 @@ console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
 console.log(isBookRead(books, "Harry Potter y la piedra filosofal")); // true
 
 //5. Slot Machine
+class SlothMachine {
+    private coins: number;
 
+    constructor() {
+        this.coins = 0;
+        this.loose = this.loose.bind(this);
+        this.win = this.win.bind(this);
+        this.play = this.play.bind(this);
+    }
+    public play() {
+        const random_boolean = Math.random() >= 0.5;
+        const random_boolean1 = Math.random() >= 0.5;
+        const random_boolean2 = Math.random() >= 0.5;
+        return random_boolean && random_boolean1 && random_boolean2 ?
+            this.win() : this.loose();
+    }
 
+    public win() {
+        let message = `Congratulations!!!. You won ${this.coins} coins!!`;
+        this.coins = 0;
+        console.log(message) ;
+    }
+    public loose() {
+        this.coins++;
+        console.log(`Good luck next time!! The numbers of coins accumulated is ${this.coins}`);
+    }
+}
 
+const machine1 = new SlothMachine();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
 

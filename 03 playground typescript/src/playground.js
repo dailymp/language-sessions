@@ -71,3 +71,35 @@ console.log(isBookRead(books, "Canción de hielo y fuego")); // false
 console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
 console.log(isBookRead(books, "Harry Potter y la piedra filosofal")); // true
 //5. Slot Machine
+var SlothMachine = /** @class */ (function () {
+    function SlothMachine() {
+        this.coins = 0;
+        this.loose = this.loose.bind(this);
+        this.win = this.win.bind(this);
+        this.play = this.play.bind(this);
+    }
+    SlothMachine.prototype.play = function () {
+        var random_boolean = Math.random() >= 0.5;
+        var random_boolean1 = Math.random() >= 0.5;
+        var random_boolean2 = Math.random() >= 0.5;
+        return random_boolean && random_boolean1 && random_boolean2 ?
+            this.win() : this.loose();
+    };
+    SlothMachine.prototype.win = function () {
+        var message = "Congratulations!!!. You won " + this.coins + " coins!!";
+        this.coins = 0;
+        console.log(message);
+    };
+    SlothMachine.prototype.loose = function () {
+        this.coins++;
+        console.log("Good luck next time!! The numbers of coins accumulated is " + this.coins);
+    };
+    return SlothMachine;
+}());
+var machine1 = new SlothMachine();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
