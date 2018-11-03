@@ -86,6 +86,9 @@ var SlothMachine = /** @class */ (function () {
             this.win() : this.loose();
     };
     SlothMachine.prototype.win = function () {
+        if (this.coins === 0) {
+            this.coins++;
+        }
         var message = "Congratulations!!!. You won " + this.coins + " coins!!";
         this.coins = 0;
         console.log(message);

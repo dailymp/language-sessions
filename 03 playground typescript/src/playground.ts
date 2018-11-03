@@ -16,6 +16,7 @@ const books: book[] = [
     { title: "Canción de hielo y fuego", isRead: false },
     { title: "Devastación", isRead: true },
 ];
+
 //1. Head
 const head = (first: Array<string>) => first
 console.log("head " + head(frutas));
@@ -88,9 +89,12 @@ class SlothMachine {
     }
 
     public win() {
+        if (this.coins === 0) {
+            this.coins++;
+        }
         let message = `Congratulations!!!. You won ${this.coins} coins!!`;
         this.coins = 0;
-        console.log(message) ;
+        console.log(message);
     }
     public loose() {
         this.coins++;
